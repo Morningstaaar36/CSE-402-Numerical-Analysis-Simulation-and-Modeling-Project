@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 430" role="img" aria-label="Pipeline: geometry scan, PySCF Hamiltonian, qubit mapping, VQE, exact check, interpolation, geometry recovery.">
+  <title>From geometry to potential energy surface</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#070714"/>
+      <stop offset="1" stop-color="#1c1c52"/>
+    </linearGradient>
+    <linearGradient id="wire" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#c084fc"/>
+    </linearGradient>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#9d8df1"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="430" fill="url(#bg)"/>
+  <rect width="1200" height="3" fill="url(#wire)"/>
+
+  <g font-family="'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif" fill="#e9e6ff">
+    <text x="600" y="50" text-anchor="middle" font-size="26" font-weight="700">From a handful of expensive VQE points to a full energy surface</text>
+    <text x="600" y="78" text-anchor="middle" font-size="14.5" fill="#b3a6f5">every stage is checked against exact diagonalisation of the same Hamiltonian</text>
+
+    <!-- row 1: simulation -->
+    <g stroke="#8a7fe8" stroke-width="1.6" fill="#15153e">
+      <rect x="40"  y="120" width="250" height="110" rx="14"/>
+      <rect x="350" y="120" width="250" height="110" rx="14"/>
+      <rect x="660" y="120" width="250" height="110" rx="14"/>
+      <rect x="970" y="120" width="190" height="110" rx="14"/>
+    </g>
+    <g stroke="#9d8df1" stroke-width="2.2" marker-end="url(#arr)" fill="none">
+      <line x1="292" y1="175" x2="346" y2="175"/>
+      <line x1="602" y1="175" x2="656" y2="175"/>
+      <line x1="912" y1="175" x2="966" y2="175"/>
+    </g>
+
+    <text x="165" y="152" text-anchor="middle" font-size="12" fill="#5eead4" letter-spacing="2">01 · GEOMETRY</text>
+    <text x="165" y="180" text-anchor="middle" font-size="17" font-weight="600">Bond / angle / twist scan</text>
+    <text x="165" y="204" text-anchor="middle" font-size="13" fill="#b3a6f5">11 molecules · 23 scans</text>
+
+    <text x="475" y="152" text-anchor="middle" font-size="12" fill="#5eead4" letter-spacing="2">02 · HAMILTONIAN</text>
+    <text x="475" y="180" text-anchor="middle" font-size="17" font-weight="600">PySCF active space</text>
+    <text x="475" y="204" text-anchor="middle" font-size="13" fill="#b3a6f5">STO-3G · parity mapping</text>
+
+    <text x="785" y="152" text-anchor="middle" font-size="12" fill="#5eead4" letter-spacing="2">03 · VQE</text>
+    <text x="785" y="180" text-anchor="middle" font-size="17" font-weight="600">UCCSD / hardware-efficient</text>
+    <text x="785" y="204" text-anchor="middle" font-size="13" fill="#b3a6f5">SLSQP · COBYLA · warm starts</text>
+
+    <text x="1065" y="152" text-anchor="middle" font-size="12" fill="#5eead4" letter-spacing="2">04 · VALIDATE</text>
+    <text x="1065" y="180" text-anchor="middle" font-size="17" font-weight="600">Exact check</text>
+    <text x="1065" y="204" text-anchor="middle" font-size="13" fill="#b3a6f5">692 / 692 bound held</text>
+
+    <!-- connector down -->
+    <path d="M1065,232 V268 H165 V290" stroke="#9d8df1" stroke-width="2.2" fill="none" marker-end="url(#arr)"/>
+
+    <!-- row 2: numerical analysis -->
+    <g stroke="#c084fc" stroke-width="1.6" fill="#1d1546">
+      <rect x="40"  y="292" width="250" height="110" rx="14"/>
+      <rect x="350" y="292" width="250" height="110" rx="14"/>
+      <rect x="660" y="292" width="250" height="110" rx="14"/>
+      <rect x="970" y="292" width="190" height="110" rx="14"/>
+    </g>
+    <g stroke="#9d8df1" stroke-width="2.2" marker-end="url(#arr)" fill="none">
+      <line x1="292" y1="347" x2="346" y2="347"/>
+      <line x1="602" y1="347" x2="656" y2="347"/>
+      <line x1="912" y1="347" x2="966" y2="347"/>
+    </g>
+
+    <text x="165" y="324" text-anchor="middle" font-size="12" fill="#f0abfc" letter-spacing="2">05 · PIECEWISE LINEAR</text>
+    <text x="165" y="352" text-anchor="middle" font-size="17" font-weight="600">Baseline</text>
+    <text x="165" y="376" text-anchor="middle" font-size="13" fill="#b3a6f5">the bar to beat</text>
+
+    <text x="475" y="324" text-anchor="middle" font-size="12" fill="#f0abfc" letter-spacing="2">06 · POLYNOMIAL</text>
+    <text x="475" y="352" text-anchor="middle" font-size="17" font-weight="600">Global fit, degree sweep</text>
+    <text x="475" y="376" text-anchor="middle" font-size="13" fill="#b3a6f5">leave-one-out scoring</text>
+
+    <text x="785" y="324" text-anchor="middle" font-size="12" fill="#f0abfc" letter-spacing="2">07 · CUBIC SPLINE</text>
+    <text x="785" y="352" text-anchor="middle" font-size="17" font-weight="600">Cubic / bicubic</text>
+    <text x="785" y="376" text-anchor="middle" font-size="13" fill="#b3a6f5">half-grid holdout in 2-D</text>
+
+    <text x="1065" y="324" text-anchor="middle" font-size="12" fill="#f0abfc" letter-spacing="2">08 · RESULT</text>
+    <text x="1065" y="352" text-anchor="middle" font-size="17" font-weight="600">Equilibrium geometry</text>
+    <text x="1065" y="376" text-anchor="middle" font-size="13" fill="#b3a6f5">sub-grid resolution</text>
+  </g>
+</svg>
